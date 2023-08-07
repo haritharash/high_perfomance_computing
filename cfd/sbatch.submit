@@ -1,0 +1,13 @@
+#!/bin/bash
+#SBATCH --job-name=example-job
+#SBATCH --account=cs402users
+#SBATCH --partition=cs402-viper
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=4
+#SBATCH --cpus-per-task=1
+#SBATCH --time=00:10:00
+
+module purge
+module load cs402-mpi
+
+time mpirun ./karman -x 1320 -y 240 -o karman_parallel.bin
